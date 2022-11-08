@@ -227,7 +227,7 @@ FINRUSH: MOV C, 10H
 EXIT:SETB TR0
 	RETI
 
-COMPARETEMP:   ;sıcaklığın target temperature civarında olup olmadığına bakacak ve Carry flag'i değiştirecek
+COMPARETEMP:   ;sÃ½caklÃ½Ã°Ã½n target temperature civarÃ½nda olup olmadÃ½Ã°Ã½na bakacak ve Carry flag'i deÃ°iÃ¾tirecek
 	MOV A,TARGETTEMP
 	ADD A,#2
 	MOV 45H ,A			;UPPER BORDER
@@ -250,7 +250,7 @@ KLJ2: RET
 READTEMP:
 	CLR WR
 	SETB WR				;STARTS CONVERSION
-CYC1: JB INTR, CYC1;WAİT UNTİL ALL DATA İS SEND
+CYC1: JB INTR, CYC1;WAÃT UNTÃL ALL DATA ÃS SEND
 	CLR RD				;END OF CONVERSION
 	MOV CURRENTTEMP, P2;TRANSFER DATA TO ACC
 	SETB RD				;TO GET READY FOR NEXT INPUT
@@ -270,7 +270,7 @@ SHOWCURRENT:       ;SHOW CURRENT TEMPERATURE
 	ACALL DATAWRT
 	RET
 	
-SETHEATER:     ;carry flag 1 ise LED yakacak ve sıcaklığı artıracak
+SETHEATER:     ;carry flag 1 ise LED yakacak ve sÃ½caklÃ½Ã°Ã½ artÃ½racak
 	JNC OFF
 	SETB P3.3
 	CLR P0.4
@@ -346,12 +346,12 @@ OKMIN:				            ;IF VALID MIN VALUE...
 	SJMP F 	
 PASS5:CJNE A, #'C', NOTC
 	CLR FREEMODE
-	ACALL CHECKZERO			; kontrol et zaman ve sıcaklık değerleri girilmiş mi girilmemişse TEMP=30, MIN=5
+	ACALL CHECKZERO			; kontrol et zaman ve sÃ½caklÃ½k deÃ°erleri girilmiÃ¾ mi girilmemiÃ¾se TEMP=30, MIN=5
 	SETB TR0
 	SJMP F	
 NOTC:CJNE A, #'c', NOT_c
 	CLR FREEMODE
-	ACALL CHECKZERO			; kontrol et zaman ve sıcaklık değerleri girilmiş mi girilmemişse TEMP=30, MIN=5
+	ACALL CHECKZERO			; kontrol et zaman ve sÃ½caklÃ½k deÃ°erleri girilmiÃ¾ mi girilmemiÃ¾se TEMP=30, MIN=5
 	SETB TR0
 	SJMP F
 NOT_c:CJNE A, #'T', NOTT
